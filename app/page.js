@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 /* ---------------------------------------------------------------------------
    CONFIG — edite aqui quando os dados forem confirmados
@@ -52,34 +52,11 @@ const I = {
 export default function Page() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const revealRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll);
-
-    // animação de "montagem do mosaico" no hero
-    const grid = revealRef.current;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (grid && !reduce) {
-      const cols = window.innerWidth < 600 ? 8 : 14;
-      const rows = Math.ceil((cols * window.innerHeight) / window.innerWidth);
-      grid.style.gridTemplateColumns = `repeat(${cols},1fr)`;
-      grid.style.gridTemplateRows = `repeat(${rows},1fr)`;
-      const frag = document.createDocumentFragment();
-      for (let i = 0; i < cols * rows; i++) frag.appendChild(document.createElement("div"));
-      grid.appendChild(frag);
-      requestAnimationFrame(() => {
-        Array.from(grid.children).forEach((t) => {
-          t.style.transitionDelay = Math.random() * 1.1 + "s";
-          t.style.opacity = "0";
-        });
-        setTimeout(() => grid.parentNode && grid.remove(), 2400);
-      });
-    } else if (grid) {
-      grid.remove();
-    }
 
     const io = new IntersectionObserver(
       (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
@@ -110,13 +87,12 @@ export default function Page() {
         </button>
       </header>
 
-      {/* HERO — mosaico animado ao fundo */}
+      {/* HERO — placa em destaque sobre textura de ambiente */}
       <section className="hero" id="topo">
         <div className="hero-bg" aria-hidden="true"></div>
-        <div className="hero-veil" aria-hidden="true"></div>
-        <div id="reveal" ref={revealRef} aria-hidden="true"></div>
         <div className="hero-inner">
-          <h1 className="hero-title">Mosaico Analítico</h1>
+          <h1 className="sr-only">Mosaico Analítico — Clínica e Transmissão</h1>
+          <Image className="hero-logo" src="/assets/mosaico-placa.jpg" alt="Mosaico Analítico" width={1500} height={560} priority />
           <p className="hero-slogan">Clínica e Transmissão</p>
           <p className="hero-tag">Psicologia &amp; Psicanálise · João Pessoa/PB</p>
           <hr className="hero-rule" />
