@@ -164,3 +164,14 @@ footer a{color:var(--gold)}
 .contact-simple .btn{max-width:340px;margin-top:6px}
 .maplink{display:inline-block;margin-top:8px;color:var(--gold);font-size:.85rem;border-bottom:1px solid rgba(217,154,43,.45)}
 .maplink:hover{border-color:var(--gold)}
+
+/* ---------- QA responsivo (proteções gerais) ---------- */
+html,body{max-width:100%}
+h1,h2,h3,p,a,span{overflow-wrap:break-word}
+.hero-tag{padding:0 12px}
+.menu{max-width:100%}
+@media (max-width:380px){
+  .menu{gap:10px 16px}
+  .menu a{font-size:.82rem}
+  .container{padding:0 16px}
+}

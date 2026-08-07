@@ -18,18 +18,18 @@ const PROS = [
     esp: "Adultos e terceira idade. Mediação de conflitos: casais, famílias, sócios e herdeiros.", acc: "var(--plum)", foto: "/assets/prof/elvira.jpg", wa: "", ig: "" },
   { nome: "Laura Daniel R. Nogueira", crp: "CRP 13/4078",
     esp: "Crianças, adolescentes, adultos e terceira idade.", acc: "var(--olive)", foto: "/assets/prof/laura.jpg", wa: "", ig: "" },
+  { nome: "Ananda Ferrer Arruda", crp: "CRP 13/14021",
+    esp: "Atendimento clínico psicanalítico.", acc: "var(--terra)", foto: "/assets/prof/ananda.jpg", wa: "", ig: "" },
+  { nome: "Bianca da Nóbrega T. Trombetta", crp: "CRP 13/14204",
+    esp: "Crianças, adolescentes, adultos e terceira idade.", acc: "var(--gold)", foto: "/assets/prof/bianca.jpg", wa: "", ig: "" },
   { nome: "Camila Yamaoka M. Maia", crp: "CRP 13/4694",
     esp: "Crianças, adolescentes e adultos. Orientação profissional e vocacional.", acc: "var(--teal)", foto: "/assets/prof/camila.jpg", wa: "", ig: "" },
   { nome: "Maressa Marques da Costa", crp: "CRP 13/9675",
     esp: "Crianças, adolescentes e adultos.", acc: "var(--blue)", foto: "/assets/prof/maressa.jpg", wa: "", ig: "" },
-  { nome: "Bianca da Nóbrega T. Trombetta", crp: "CRP 13/14204",
-    esp: "Crianças, adolescentes, adultos e terceira idade.", acc: "var(--gold)", foto: "/assets/prof/bianca.jpg", wa: "", ig: "" },
-  { nome: "Ananda Ferrer Arruda", crp: "CRP 13/14021",
-    esp: "Atendimento clínico psicanalítico.", acc: "var(--terra)", foto: "/assets/prof/ananda.jpg", wa: "", ig: "" },
 ];
 
 const ESPS = ["Crianças","Adolescentes","Adultos","Terceira idade",
-  "Orientação profissional e vocacional","Mediação de conflitos","Casais e famílias","Atendimento psicanalítico"];
+  "Orientação profissional e vocacional","Mediação de conflitos","Casais, famílias e sócios","Atendimento psicanalítico"];
 
 const wa = (n) => `https://wa.me/${n || CONFIG.whatsapp}`;
 const ig = (h) => `https://instagram.com/${h || CONFIG.instagram}`;
@@ -80,7 +80,7 @@ export default function Page() {
           <h1 className="sr-only">Mosaico Analítico — Clínica e Transmissão</h1>
           <Image className="hero-logo" src="/assets/mosaico-placa.jpg" alt="Mosaico Analítico" width={1500} height={560} priority />
           <p className="hero-slogan">Clínica e Transmissão</p>
-          <p className="hero-tag">Psicologia &amp; Psicanálise · João Pessoa/PB</p>
+          <p className="hero-tag">Psicologia &amp; Psicanálise · João Pessoa/PB</p>
           <hr className="hero-rule" />
         </div>
       </section>
@@ -93,7 +93,7 @@ export default function Page() {
           <div className="reveal">
             <p className="eyebrow">O consultório</p>
             <h2>Muitas peças, uma escuta inteira.</h2>
-            <p className="lead">O Mosaico Analítico é um consultório de psicologia e psicanálise em João Pessoa/PB, formado por profissionais que compartilham um mesmo cuidado: acolher cada pessoa em sua singularidade.</p>
+            <p className="lead">O Mosaico Analítico é um consultório de psicologia e psicanálise em João Pessoa/PB, formado por profissionais que compartilham um mesmo cuidado: acolher cada pessoa em sua singularidade.</p>
             <p>Como num mosaico, acreditamos que aquilo que parece fragmentado pode compor sentido. No encontro clínico, damos lugar à palavra, ao tempo de cada um e à construção de novos arranjos para a própria história — sempre com ética, sigilo e presença.</p>
             <p>Atendemos crianças, adolescentes, adultos e a terceira idade, presencialmente, em um ambiente reservado e cuidadoso.</p>
           </div>
@@ -110,7 +110,7 @@ export default function Page() {
           <div className="container">
             <p className="eyebrow" style={{ color: "var(--gold)" }}>Nossa trajetória</p>
             <div className="num reveal">Desde <b>{CONFIG.ano}</b></div>
-            <p className="reveal">Um espaço construído encontro após encontro, dedicado à escuta clínica em João Pessoa.</p>
+            <p className="reveal">Um espaço construído encontro após encontro, dedicado à escuta clínica em João Pessoa.</p>
             <div className="facts reveal">
               <div className="fact"><span>6</span><small>Profissionais</small></div>
               <div className="fact"><span>Todas as idades</span><small>Da infância à terceira idade</small></div>
@@ -186,7 +186,7 @@ export default function Page() {
               <div className="ic">{I.pin()}</div>
               <div>
                 <h4>Endereço</h4>
-                <p>Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710<br/>Edf. Liv Mall — João Pessoa/PB</p>
+                <p>Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710<br/>Edf. Liv Mall — João Pessoa/PB</p>
                 <a className="maplink" href={MAPS} target="_blank" rel="noopener">Ver no mapa</a>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function Page() {
 
       <footer>
         <div className="fb">Mosaico Analítico</div>
-        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise · João Pessoa/PB</p>
+        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise · João Pessoa/PB</p>
         <p style={{ opacity: 0.6, fontSize: ".8rem" }}>© {new Date().getFullYear()} Mosaico Analítico. Todos os direitos reservados.</p>
       </footer>
     </>
