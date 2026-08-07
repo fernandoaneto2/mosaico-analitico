@@ -48,6 +48,7 @@ const I = {
 
 export default function Page() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -63,13 +64,16 @@ export default function Page() {
 
   return (
     <>
-      {/* NAV — minimalista e centralizado */}
+      {/* NAV — minimalista; hamburguer no mobile */}
       <header className={"nav" + (scrolled ? " scrolled" : "")}>
-        <nav className="menu">
-          <a href="#sobre">Sobre</a>
-          <a href="#abordagem">Abordagem</a>
-          <a href="#equipe">Profissionais</a>
-          <a href="#especialidades">Especialidades</a>
+        <button className={"burger" + (open ? " open" : "")} aria-label="Abrir menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+          <span></span><span></span><span></span>
+        </button>
+        <nav className={"menu" + (open ? " open" : "")}>
+          <a href="#sobre" onClick={() => setOpen(false)}>Sobre</a>
+          <a href="#abordagem" onClick={() => setOpen(false)}>Abordagem</a>
+          <a href="#equipe" onClick={() => setOpen(false)}>Profissionais</a>
+          <a href="#especialidades" onClick={() => setOpen(false)}>Especialidades</a>
         </nav>
       </header>
 
@@ -204,7 +208,8 @@ export default function Page() {
 
       <footer>
         <div className="fb">Mosaico Analítico</div>
-        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise · João Pessoa/PB</p>
+        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise</p>
+        <p className="foot-addr">Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710 · Edf. Liv Mall — João Pessoa/PB</p>
         <p style={{ opacity: 0.6, fontSize: ".8rem" }}>© {new Date().getFullYear()} Mosaico Analítico. Todos os direitos reservados.</p>
       </footer>
     </>
