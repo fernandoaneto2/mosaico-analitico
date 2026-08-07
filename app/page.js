@@ -12,7 +12,6 @@ const CONFIG = {
   email: "contato@mosaicoanalitico.com.br",
 };
 
-/* Ordem definida pelo consultório; papel padronizado para todas */
 const PAPEL = "Psicologia · Psicanálise";
 const PROS = [
   { nome: "Elvira Daniel Rezende", crp: "CRP 13/2158",
@@ -34,6 +33,7 @@ const ESPS = ["Crianças","Adolescentes","Adultos","Terceira idade",
 
 const wa = (n) => `https://wa.me/${n || CONFIG.whatsapp}`;
 const ig = (h) => `https://instagram.com/${h || CONFIG.instagram}`;
+const MAPS = "https://www.google.com/maps/search/?api=1&query=Edf.+Liv+Mall+Av.+Flavio+Ribeiro+Coutinho+500+Joao+Pessoa";
 
 /* ---------- Ícones (SVG line) ---------- */
 const I = {
@@ -42,22 +42,17 @@ const I = {
   shield:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>,
   users:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6M17.5 19a5.5 5.5 0 0 0-2.5-4.6"/></svg>,
   pin:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>,
-  chat:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.3A8 8 0 1 1 21 12Z"/></svg>,
-  mail:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>,
-  insta:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>,
-  clock:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>,
   wa:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><path d="M20 11.5a7.5 7.5 0 0 1-11 6.7L4.5 19.5l1.4-4.3A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9 9.2c.2 2.6 2.9 5.3 5.6 5.6.6.1 1.2-.4 1.3-1 .1-.5-.2-.8-.6-1-.4-.2-1.1-.5-1.4-.2-.3.2-.5.6-.9.5-.9-.3-1.9-1.3-2.2-2.2-.1-.4.3-.6.5-.9.3-.3 0-1-.2-1.4-.2-.4-.5-.7-1-.6-.6.1-1.1.7-1 1.3Z" fill="currentColor" stroke="none"/></svg>,
+  insta:(p)=> <svg viewBox="0 0 24 24" className="icn" {...p}><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>,
 };
 
 export default function Page() {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll);
-
     const io = new IntersectionObserver(
       (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
       { threshold: 0.14 }
@@ -66,25 +61,16 @@ export default function Page() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const close = () => setOpen(false);
-
   return (
     <>
-      {/* NAV */}
+      {/* NAV — minimalista e centralizado */}
       <header className={"nav" + (scrolled ? " scrolled" : "")}>
-        <a href="#topo" className="logo" aria-label="Mosaico Analítico" onClick={close}>
-          <img src="/assets/mosaico-placa.jpg" alt="Mosaico Analítico" />
-        </a>
-        <nav className={"menu" + (open ? " open" : "")}>
-          <a href="#sobre" onClick={close}>Sobre</a>
-          <a href="#abordagem" onClick={close}>Abordagem</a>
-          <a href="#equipe" onClick={close}>Profissionais</a>
-          <a href="#especialidades" onClick={close}>Especialidades</a>
-          <a href="#contato" className="cta" onClick={close}>Contato</a>
+        <nav className="menu">
+          <a href="#sobre">Sobre</a>
+          <a href="#abordagem">Abordagem</a>
+          <a href="#equipe">Profissionais</a>
+          <a href="#especialidades">Especialidades</a>
         </nav>
-        <button className="burger" aria-label="Abrir menu" onClick={() => setOpen(!open)}>
-          <span></span><span></span><span></span>
-        </button>
       </header>
 
       {/* HERO — placa em destaque sobre textura de ambiente */}
@@ -112,7 +98,6 @@ export default function Page() {
             <p>Atendemos crianças, adolescentes, adultos e a terceira idade, presencialmente, em um ambiente reservado e cuidadoso.</p>
           </div>
           <div className="about-art reveal">
-            <span className="frame" aria-hidden="true"></span>
             <Image src="/assets/mosaico-flores.jpg" alt="Painel em mosaico do espaço Mosaico Analítico" width={980} height={1360} />
             <p className="cap">Peças do nosso espaço</p>
           </div>
@@ -188,29 +173,31 @@ export default function Page() {
         </div>
       </section>
 
-      {/* CONTATO */}
+      {/* CONTATO — apenas endereço e WhatsApp */}
       <section className="section contact" id="contato">
         <div className="container">
           <div className="center">
             <p className="eyebrow" style={{ color: "var(--gold)" }}>Onde nos encontrar</p>
             <h2>Contato &amp; Localização</h2>
-            <p className="sub">Será um prazer receber você. Fique à vontade para tirar suas dúvidas.</p>
+            <p className="sub">Será um prazer receber você.</p>
           </div>
-          <div className="contact-grid">
-            <div>
-              <div className="info-item" style={{ marginBottom: 20 }}><div className="ic">{I.pin()}</div><div><h4>Endereço</h4><p>Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710<br/>Edf. Liv Mall — João Pessoa/PB</p></div></div>
-              <div className="info-item" style={{ marginBottom: 20 }}><div className="ic">{I.chat()}</div><div><h4>WhatsApp</h4><p>(83) 0 0000-0000 <span className="tag-soon">· a confirmar</span></p></div></div>
-              <div className="info-item" style={{ marginBottom: 20 }}><div className="ic">{I.mail()}</div><div><h4>E-mail</h4><p><a href={"mailto:" + CONFIG.email}>{CONFIG.email}</a> <span className="tag-soon">· a confirmar</span></p></div></div>
-              <div className="info-item" style={{ marginBottom: 20 }}><div className="ic">{I.insta()}</div><div><h4>Instagram</h4><p><a href={ig()} target="_blank" rel="noopener">@{CONFIG.instagram}</a> <span className="tag-soon">· a confirmar</span></p></div></div>
-              <div className="info-item"><div className="ic">{I.clock()}</div><div><h4>Horário</h4><p>Segunda a sexta, com horário marcado <span className="tag-soon">· a confirmar</span></p></div></div>
+          <div className="contact-simple">
+            <div className="info-item">
+              <div className="ic">{I.pin()}</div>
+              <div>
+                <h4>Endereço</h4>
+                <p>Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710<br/>Edf. Liv Mall — João Pessoa/PB</p>
+                <a className="maplink" href={MAPS} target="_blank" rel="noopener">Ver no mapa</a>
+              </div>
             </div>
-            <div className="contact-card">
-              <img src="/assets/mosaico-placa.jpg" alt="Mosaico Analítico" />
-              <a href={wa()} target="_blank" rel="noopener" className="btn btn-wa">{I.wa()} Falar no WhatsApp</a>
-              <a href={ig()} target="_blank" rel="noopener" className="btn btn-out">{I.insta()} Seguir no Instagram</a>
-              <a href="https://www.google.com/maps/search/?api=1&query=Edf.+Liv+Mall+Av.+Flavio+Ribeiro+Coutinho+500+Joao+Pessoa" target="_blank" rel="noopener" className="btn btn-out">{I.pin()} Ver no mapa</a>
-              <p className="note">Contatos provisórios — envie os oficiais que eu conecto tudo.</p>
+            <div className="info-item">
+              <div className="ic">{I.wa()}</div>
+              <div>
+                <h4>WhatsApp</h4>
+                <p>(83) 0 0000-0000 <span className="tag-soon">· a confirmar</span></p>
+              </div>
             </div>
+            <a href={wa()} target="_blank" rel="noopener" className="btn btn-wa">{I.wa()} Falar no WhatsApp</a>
           </div>
         </div>
       </section>

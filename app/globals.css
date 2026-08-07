@@ -20,23 +20,14 @@ a{color:inherit;text-decoration:none}
 .center{text-align:center}
 .icn{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* ---------- NAV ---------- */
-.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;
-  padding:12px 18px;transition:.35s}
+/* ---------- NAV (minimalista, central) ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;justify-content:center;padding:14px 18px;transition:.35s}
 .nav.scrolled{background:rgba(251,246,234,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px -16px rgba(0,0,0,.5)}
-.nav .logo{display:flex;align-items:center;height:38px}
-.nav .logo img{height:38px;width:auto;border-radius:6px;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
-.menu{position:fixed;inset:0 0 0 auto;width:min(80vw,300px);background:var(--navy);display:flex;flex-direction:column;
-  justify-content:center;gap:26px;padding:40px;transform:translateX(100%);transition:.35s;box-shadow:-20px 0 40px -20px rgba(0,0,0,.6)}
-.menu.open{transform:none}
-.menu a{color:#fff;font-size:1.05rem;font-weight:500;opacity:.9}
-.menu a:hover{opacity:1;color:var(--gold)}
-.burger{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:8px;z-index:61}
-.burger span{width:26px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
-.nav:not(.scrolled) .burger span{background:#fff;box-shadow:0 0 6px rgba(0,0,0,.35)}
-.menu.open ~ .burger span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
-.menu.open ~ .burger span:nth-child(2){opacity:0}
-.menu.open ~ .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
+.menu{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 26px}
+.menu a{color:var(--navy);font-size:.9rem;font-weight:500;letter-spacing:.02em;opacity:.85;transition:.2s;position:relative}
+.menu a:hover{opacity:1}
+.menu a::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--gold);transition:.25s}
+.menu a:hover::after{width:100%}
 
 /* ---------- HERO (placa sobre textura de ambiente) ---------- */
 .hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg,var(--cream),var(--cream-2))}
@@ -68,7 +59,7 @@ a{color:inherit;text-decoration:none}
 /* ---------- DESDE ---------- */
 .desde{position:relative;color:#fff;text-align:center}
 .desde-bg{position:relative;padding:70px 20px;
-  background:linear-gradient(rgba(30,22,16,.55),rgba(28,20,14,.72)),url('/assets/ambiente-band.jpg') center/cover}
+  background:linear-gradient(rgba(20,30,50,.82),rgba(20,30,50,.9)),url('/assets/mosaico-flores.jpg') center/cover}
 .desde .num{font-family:'Fraunces',serif;font-size:clamp(2.4rem,11vw,4.4rem);font-weight:700;line-height:1;color:#fff}
 .desde .num b{color:var(--gold)}
 .desde p{max-width:620px;margin:14px auto 0;color:rgba(255,255,255,.86)}
@@ -154,11 +145,6 @@ footer a{color:var(--gold)}
 @media (min-width:768px){
   .section{padding:88px 0}
   .nav{padding:14px 30px}
-  .burger{display:none}
-  .menu{position:static;width:auto;background:none;flex-direction:row;gap:26px;padding:0;transform:none;box-shadow:none}
-  .menu a{color:var(--navy);font-size:.9rem;opacity:.85}
-  .nav:not(.scrolled) .menu a{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
-  .menu a.cta{border:1.5px solid currentColor;padding:8px 16px;border-radius:999px}
   .about-grid{flex-direction:row;align-items:center;gap:52px}
   .about-grid > div{flex:1}
   .about-art{order:0}
@@ -171,3 +157,10 @@ footer a{color:var(--gold)}
   .hero{min-height:92vh}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-inner{opacity:1;transform:none}}
+
+/* ---------- CONTATO simples (endereço + WhatsApp) ---------- */
+.contact-simple{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:34px}
+.contact-simple .info-item{max-width:440px;width:100%}
+.contact-simple .btn{max-width:340px;margin-top:6px}
+.maplink{display:inline-block;margin-top:8px;color:var(--gold);font-size:.85rem;border-bottom:1px solid rgba(217,154,43,.45)}
+.maplink:hover{border-color:var(--gold)}
