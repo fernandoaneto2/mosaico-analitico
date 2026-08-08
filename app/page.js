@@ -120,6 +120,7 @@ export default function Page() {
               <div className="fact"><span>Todas as idades</span><small>Da infância à terceira idade</small></div>
               <div className="fact"><span>Presencial</span><small>Edf. Liv Mall — JPA/PB</small></div>
             </div>
+            <p className="desde-addr reveal"><span className="pin">{I.pin()}</span> Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710</p>
           </div>
         </div>
       </section>
@@ -208,8 +209,7 @@ export default function Page() {
 
       <footer>
         <div className="fb">Mosaico Analítico</div>
-        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise</p>
-        <p className="foot-addr">Av. Flávio Ribeiro Coutinho, 500 — 7º andar, sala 710 · Edf. Liv Mall — João Pessoa/PB</p>
+        <p>Clínica e Transmissão · Psicologia &amp; Psicanálise · João Pessoa/PB</p>
         <p style={{ opacity: 0.6, fontSize: ".8rem" }}>© {new Date().getFullYear()} Mosaico Analítico. Todos os direitos reservados.</p>
       </footer>
     </>

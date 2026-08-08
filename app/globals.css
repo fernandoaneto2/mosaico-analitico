@@ -185,4 +185,13 @@ h1,h2,h3,p,a,span{overflow-wrap:break-word}
   .container{padding:0 16px}
 }
 
-.foot-addr{font-size:.85rem;opacity:.82;margin-top:2px}
+
+/* endereço na faixa Desde */
+.desde-addr{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;max-width:560px;margin:30px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.86);font-size:.9rem;line-height:1.5}
+.desde-addr .pin{display:inline-flex}
+.desde-addr .icn{stroke:var(--gold);width:18px;height:18px}
+
+/* Justificar textos de corpo alinhados à esquerda (os centralizados permanecem) */
+.about p,
+.pro .esp,
+.mini p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
